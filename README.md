@@ -1,6 +1,6 @@
 # SimSig Clients #
 
-This suite of programmes use the [SimSig Gateway Interface](https://github.com/Gwasanaethau/SimSigGatewayInterface) package to connect to SimSig servers, and provide various examples of what can be done with the [SimSig](www.simsig.co.uk) [Gateway Interface](http://www.simsig.co.uk/dokuwiki/doku.php?id=usertrack:interface_gateway) feeds.
+This suite of programmes use the [SimSig Gateway Interface](https://github.com/Gwasanaethau/SimSigGatewayInterface) package to connect to SimSig servers, and provide various examples of what can be done with the [SimSig](www.simsig.co.uk) [Interface Gateway](http://www.simsig.co.uk/dokuwiki/doku.php?id=usertrack:interface_gateway) feeds.
 
 ### Requirements ###
 
