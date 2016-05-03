@@ -20,77 +20,77 @@ class ExitListener implements MouseListener
 
 // ------------------------------------------ ExitListener Class ---------------
 
-	private JPanel button;
-	private LancingUI ui;
-	private boolean isCursorInBounds, isClickHeld;
+  private JPanel button;
+  private LancingUI ui;
+  private boolean isCursorInBounds, isClickHeld;
 
 // ------------------------------------------ ExitListener Class ---------------
 
-	ExitListener(JPanel button, LancingUI ui)
-	{
+  ExitListener(JPanel button, LancingUI ui)
+  {
 
-		this.button = button;
-		this.ui = ui;
-		isCursorInBounds = false;
-		isClickHeld = false;
+    this.button = button;
+    this.ui = ui;
+    isCursorInBounds = false;
+    isClickHeld = false;
 
-	} // End ‘ExitListener(JPanel, LancingUI)’ Constructor
-
-// ------------------------------------------ ExitListener Class ---------------
-
-	public void mouseClicked(MouseEvent e){}
+  } // End ‘ExitListener(JPanel, LancingUI)’ Constructor
 
 // ------------------------------------------ ExitListener Class ---------------
 
-	public void mousePressed(MouseEvent e)
-	{
-
-		isClickHeld = true;
-
-	} // End ‘mousePressed(MouseEvent)’ Method
+  public void mouseClicked(MouseEvent e){}
 
 // ------------------------------------------ ExitListener Class ---------------
 
-	public void mouseReleased(MouseEvent e)
-	{
+  public void mousePressed(MouseEvent e)
+  {
 
-		isClickHeld = false;
+    isClickHeld = true;
 
-		if (!isCursorInBounds)
-		{
-			button.setOpaque(false);
-			button.repaint();
-		} // End if
-		else
-			ui.close();
-
-	} // End ‘mouseReleased(MouseEvent)’ Method
+  } // End ‘mousePressed(MouseEvent)’ Method
 
 // ------------------------------------------ ExitListener Class ---------------
 
-	public void mouseEntered(MouseEvent e)
-	{
+  public void mouseReleased(MouseEvent e)
+  {
 
-		isCursorInBounds = true;
-		button.setOpaque(true);
-		button.repaint();
+    isClickHeld = false;
 
-	} // End ‘mouseEntered(MouseEvent)’ Method
+    if (!isCursorInBounds)
+    {
+      button.setOpaque(false);
+      button.repaint();
+    } // End if
+    else
+      ui.close();
+
+  } // End ‘mouseReleased(MouseEvent)’ Method
 
 // ------------------------------------------ ExitListener Class ---------------
 
-	public void mouseExited(MouseEvent e)
-	{
+  public void mouseEntered(MouseEvent e)
+  {
 
-		isCursorInBounds = false;
+    isCursorInBounds = true;
+    button.setOpaque(true);
+    button.repaint();
 
-		if (!isClickHeld)
-		{
-			button.setOpaque(false);
-			button.repaint();
-		} // End if
+  } // End ‘mouseEntered(MouseEvent)’ Method
 
-	} // End ‘mouseExited(MouseEvent)’ Method
+// ------------------------------------------ ExitListener Class ---------------
+
+  public void mouseExited(MouseEvent e)
+  {
+
+    isCursorInBounds = false;
+
+    if (!isClickHeld)
+    {
+      button.setOpaque(false);
+      button.repaint();
+    } // End if
+
+  } // End ‘mouseExited(MouseEvent)’ Method
 
 // ------------------------------------------ ExitListener Class ---------------
 

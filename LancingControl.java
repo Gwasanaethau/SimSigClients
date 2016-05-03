@@ -44,7 +44,7 @@ class LancingControl implements Harness
 
   void start()
   {
-		EventQueue.invokeLater(new Runnable(){public void run(){
+    EventQueue.invokeLater(new Runnable(){public void run(){
       ui.entryPortal();
     }});
   } // End ‘start()’ Method
@@ -78,8 +78,8 @@ class LancingControl implements Harness
 
 // --------------------------------------- ConnectListener Class ---------------
 
-	void connect(String hostName, String portString, String debugString)
-	{
+  void connect(String hostName, String portString, String debugString)
+  {
 
     if (hostName.equals(""))
       hostName = "127.0.0.1";
@@ -104,24 +104,24 @@ class LancingControl implements Harness
     int debug;
     if (debugString.equals("") || debugString.equals("Warning"))
       debug = Constants.WARNING;
-		else if (debugString.equals("Error"))
-			debug = Constants.ERROR;
-		else if (debugString.equals("Info"))
-			debug = Constants.INFO;
-		else if (debugString.equals("Debug"))
-			debug = Constants.DEBUG;
-		else if (debugString.equals("None"))
-			debug = Constants.NONE;
+    else if (debugString.equals("Error"))
+      debug = Constants.ERROR;
+    else if (debugString.equals("Info"))
+      debug = Constants.INFO;
+    else if (debugString.equals("Debug"))
+      debug = Constants.DEBUG;
+    else if (debugString.equals("None"))
+      debug = Constants.NONE;
     else
-		{
+    {
       Printer.printError(debugString + " is not a valid number message level."
-      	+ " Defaulting to warning message level.");
+        + " Defaulting to warning message level.");
       debug = Constants.WARNING;
     } // End else
 
     client = new SimSigClient(hostName, port, debug, "simgsig", this);
 
-	} // End ‘connect()’ Method
+  } // End ‘connect()’ Method
 
 // ---------------------------------------- LancingControl Class ---------------
 
