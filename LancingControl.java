@@ -6,15 +6,7 @@ import strampáil.Printer;
 import simsigGatewayInterface.Harness;
 import simsigGatewayInterface.SimSigClient;
 import simsigGatewayInterface.SimSigMessage;
-import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -55,24 +47,17 @@ class LancingControl implements Harness
 
 // ---------------------------------------- LancingControl Class ---------------
 
-  public void connected(final boolean success)
+  public void connected(boolean success)
   {
 
-    Printer.printInfo("1:" + success);
     if (success)
-    {
       EventQueue.invokeLater(new Runnable(){public void run(){
-        Printer.printInfo("2:" + success);
         ui.mainPortal();
       }});
-    } // End if
     else
-    {
       EventQueue.invokeLater(new Runnable(){public void run(){
-        Printer.printInfo("3:" + success);
         ui.connectionFailure();
       }});
-    } // End else
 
   } // End ‘connection(boolean)’ Method
 

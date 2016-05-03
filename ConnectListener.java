@@ -12,8 +12,9 @@ import javax.swing.border.LineBorder;
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 /**
- * <code>ConnectListener</code> provides the basic
- * functions for the connect button.
+ * <code>ConnectListener</code> provides the basic mouse functions for the
+ * connect button. It also interfaces with the controller to attempt to connect
+ * to a SimSig server using the details provided.
  *
  * @author Mark David Pokorny
  * @version Dé Máirt, 3ú Bealtaine 2016
@@ -43,7 +44,7 @@ class ConnectListener implements MouseListener
     this.control = control;
     isCursorInBounds = false;
 
-  } // End ‘ExitListener(JLabel, JTextField…)’ Constructor
+  } // End ‘ConnectListener(JLabel, JTextField…)’ Constructor
 
 // --------------------------------------- ConnectListener Class ---------------
 
