@@ -221,17 +221,27 @@ class LancingUI
     mainWindow.add(motionBar);
     mainWindow.add(quit);
 
+    // Add East Worthing information boxes:
+    JLabel eastWorthingTitle = new JLabel("East Worthing", JLabel.CENTER);
+    eastWorthingTitle.setFont(new Font("Garamond", Font.PLAIN, 28));
+    eastWorthingTitle.setSize(WINDOW_WIDTH, 32);
+    eastWorthingTitle.setLocation(0, 200);
+    eastWorthingTitle.setForeground(GOLD);
+    eastWorthingTitle.setVisible(false);
+    mainWindow.add(eastWorthingTitle);
+
     // Add East Worthing button:
     JLabel eastWorthing = new JLabel("East Worthing", JLabel.CENTER);
     eastWorthing.setFont(new Font("Garamond", Font.PLAIN, 22));
-    eastWorthing.setSize(80, 26);
-    eastWorthing.setLocation(0, 34);
+    eastWorthing.setSize(150, 26);
+    eastWorthing.setLocation(10, 34);
     eastWorthing.setForeground(HIGHLIGHT);
     eastWorthing.setBackground(CHARCOAL);
     eastWorthing.setBorder(new LineBorder(HIGHLIGHT, 2));
     eastWorthing.setOpaque(true);
     eastWorthing.setToolTipText("View East Worthing");
-    eastWorthing.addMouseListener(new StationListener(eastWorthing));
+    eastWorthing.addMouseListener(new StationListener(
+      eastWorthing, eastWorthingTitle));
     mainWindow.add(eastWorthing);
 
     // Refresh the portal:
