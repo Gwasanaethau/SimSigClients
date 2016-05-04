@@ -67,7 +67,7 @@ public class LancingApproachScreens implements Harness
 
   private JLabel title, platform1, approach1, arrived1, departed1,
     platform2, approach2, arrived2, departed2,
-    ewr1app, ewr1arr, ewr1dep, ewr2app;
+    ewr1app, ewr1arr, ewr1dep, ewr2app, ewr2arr, ewr2dep;
   private ArrayList<JLabel> buttons;
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -196,6 +196,14 @@ public class LancingApproachScreens implements Harness
     configureBerthLabel(ewr2app);
     ewr2app.setLocation(WINDOW_WIDTH / 2, LEVEL_6);
 
+    ewr2arr = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(ewr2arr);
+    ewr2arr.setLocation(WINDOW_WIDTH / 2, LEVEL_7);
+
+    ewr2dep = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(ewr2dep);
+    ewr2dep.setLocation(WINDOW_WIDTH / 2, LEVEL_8);
+
   } // End ‘LancingApproachScreens()’ Constructor
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -242,6 +250,10 @@ public class LancingApproachScreens implements Harness
           ewr1dep.setText(parameters.get("descr"));
         if (parameters.get("to").equals("0021"))
           ewr2app.setText(parameters.get("descr"));
+        if (parameters.get("to").equals("0023"))
+          ewr2arr.setText(parameters.get("descr"));
+        if (parameters.get("to").equals("0025"))
+          ewr2dep.setText(parameters.get("descr"));
       } // End if
 
       if (parameters.get("from") != null)
@@ -254,6 +266,10 @@ public class LancingApproachScreens implements Harness
           ewr1dep.setText("");
         if (parameters.get("from").equals("0021"))
           ewr2app.setText("");
+        if (parameters.get("from").equals("0023"))
+          ewr2arr.setText("");
+        if (parameters.get("from").equals("0025"))
+          ewr2dep.setText("");
       } // End if
 
     } // End if
@@ -466,12 +482,16 @@ public class LancingApproachScreens implements Harness
     mainWindow.add(departed1);
     mainWindow.add(platform2);
     mainWindow.add(approach2);
+    mainWindow.add(arrived2);
+    mainWindow.add(departed2);
 
     // Add info boxes:
     mainWindow.add(ewr1app);
     mainWindow.add(ewr1arr);
     mainWindow.add(ewr1dep);
     mainWindow.add(ewr2app);
+    mainWindow.add(ewr2arr);
+    mainWindow.add(ewr2dep);
 
     // Refresh the portal:
     mainWindow.repaint();
