@@ -1,12 +1,8 @@
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 package simsigClients;
-import strampáil.Constants;
-import strampáil.Printer;
-import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-import javax.swing.border.LineBorder;
 
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -16,7 +12,7 @@ import javax.swing.border.LineBorder;
  * to a SimSig server using the details provided.
  *
  * @author Mark David Pokorny
- * @version Dé Máirt, 3ú Bealtaine 2016
+ * @version Dé Céadaoin, 4ú Bealtaine 2016
  * @since Dé Sathairn, 30ú Aibreán 2016
  */
 class ConnectListener extends ButtonListener
@@ -25,21 +21,21 @@ class ConnectListener extends ButtonListener
 // --------------------------------------- ConnectListener Class ---------------
 
   private JTextField addressBox, portBox, debugBox;
-  private LancingControl control;
-  private boolean connected;
+  private LancingApproachScreens ui;
 
 // --------------------------------------- ConnectListener Class ---------------
 
   ConnectListener(
     JLabel button, JTextField addressBox,
-    JTextField portBox, JTextField debugBox, LancingControl control)
+    JTextField portBox, JTextField debugBox,
+    LancingApproachScreens ui)
   {
 
     super(button);
     this.addressBox = addressBox;
     this.portBox = portBox;
     this.debugBox = debugBox;
-    this.control = control;
+    this.ui = ui;
 
   } // End ‘ConnectListener(JLabel, JTextField…)’ Constructor
 
@@ -49,7 +45,7 @@ class ConnectListener extends ButtonListener
   {
 
     (new Thread(new Runnable(){public void run(){
-      control.connect(
+      ui.connect(
       addressBox.getText(),
       portBox.getText(),
       debugBox.getText());

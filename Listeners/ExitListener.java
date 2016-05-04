@@ -11,7 +11,7 @@ import javax.swing.JPanel;
  * <code>ExitListener</code> provides the basic functions for the exit button.
  *
  * @author Mark David Pokorny
- * @version Dé Máirt, 3ú Bealtaine 2016
+ * @version Dé Céadaoin, 4ú Bealtaine 2016
  * @since Dé Sathairn, 30ú Aibreán 2016
  */
 class ExitListener implements MouseListener
@@ -20,12 +20,12 @@ class ExitListener implements MouseListener
 // ------------------------------------------ ExitListener Class ---------------
 
   private JPanel button;
-  private LancingUI ui;
+  private LancingApproachScreens ui;
   private boolean isCursorInBounds, isClickHeld;
 
 // ------------------------------------------ ExitListener Class ---------------
 
-  ExitListener(JPanel button, LancingUI ui)
+  ExitListener(JPanel button, LancingApproachScreens ui)
   {
 
     this.button = button;
@@ -33,7 +33,7 @@ class ExitListener implements MouseListener
     isCursorInBounds = false;
     isClickHeld = false;
 
-  } // End ‘ExitListener(JPanel, LancingUI)’ Constructor
+  } // End ‘ExitListener(JPanel, LancingApproachScreens)’ Constructor
 
 // ------------------------------------------ ExitListener Class ---------------
 

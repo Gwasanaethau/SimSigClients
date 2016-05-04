@@ -13,7 +13,7 @@ import javax.swing.border.LineBorder;
  * generic button.
  *
  * @author Mark David Pokorny
- * @version Dé Máirt, 3ú Bealtaine 2016
+ * @version Dé Céadaoin, 4ú Bealtaine 2016
  * @since Dé Máirt, 3ú Bealtaine 2016
  */
 abstract class ButtonListener implements MouseListener
@@ -43,8 +43,8 @@ abstract class ButtonListener implements MouseListener
   public void mousePressed(MouseEvent e)
   {
 
-    button.setForeground(LancingUI.CHARCOAL);
-    button.setBackground(LancingUI.HIGHLIGHT);
+    button.setForeground(LancingApproachScreens.CHARCOAL);
+    button.setBackground(LancingApproachScreens.HIGHLIGHT);
     button.repaint();
 
   } // End ‘mousePressed(MouseEvent)’ Method
@@ -54,8 +54,8 @@ abstract class ButtonListener implements MouseListener
   public void mouseReleased(MouseEvent e)
   {
 
-    button.setForeground(LancingUI.HIGHLIGHT);
-    button.setBackground(LancingUI.CHARCOAL);
+    button.setForeground(LancingApproachScreens.HIGHLIGHT);
+    button.setBackground(LancingApproachScreens.CHARCOAL);
     button.repaint();
 
     if (isCursorInBounds)
@@ -69,7 +69,7 @@ abstract class ButtonListener implements MouseListener
   {
 
     isCursorInBounds = true;
-    button.setBorder(new LineBorder(LancingUI.HIGHLIGHT_DARK, 2));
+    button.setBorder(new LineBorder(LancingApproachScreens.HIGHLIGHT_DARK, 2));
     button.repaint();
 
   } // End ‘mouseEntered(MouseEvent)’ Method
@@ -80,7 +80,7 @@ abstract class ButtonListener implements MouseListener
   {
 
     isCursorInBounds = false;
-    button.setBorder(new LineBorder(LancingUI.HIGHLIGHT, 2));
+    button.setBorder(new LineBorder(LancingApproachScreens.HIGHLIGHT, 2));
     button.repaint();
 
   } // End ‘mouseExited(MouseEvent)’ Method
