@@ -4,11 +4,11 @@ This suite of programmes use the [SimSig Gateway Interface](https://github.com/G
 
 ### Requirements ###
 
-In addition to the interface library mentioned above, the [Strampáil](https://github.com/Gwasanaethau/Stramp-il) STOMP Client Interface is required also required to connect to the SimSig STOMP server. Use will also need a Java 7 compatible JRE (or JDK if you wish to compile the code), and the SimSig simulation that will act as the server.
+In addition to the interface library mentioned above, the [Strampáil](https://github.com/Gwasanaethau/Stramp-il) STOMP Client Interface is also required to connect to the SimSig STOMP server. Use will also need a Java 7 compatible JRE (or JDK if you wish to compile the code), and the SimSig simulation that will act as the server.
 
 ### May I use this? ###
 
-Be my guest, though it is just a proof-of-concept project for me at the moment.
+The project is licensed under the MIT Licence, so be my guest!
 
 ### Can I use this? ###
 
