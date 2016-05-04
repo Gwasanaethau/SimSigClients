@@ -67,7 +67,8 @@ public class LancingApproachScreens implements Harness
 
   private JLabel title, platform1, approach1, arrived1, departed1,
     platform2, approach2, arrived2, departed2,
-    ewr1app, ewr1arr, ewr1dep, ewr2app, ewr2arr, ewr2dep;
+    ewr1app, ewr1arr, ewr1dep, ewr2app, ewr2arr, ewr2dep,
+    lac1app, lac1arr, lac1dep, lac2app, lac2arr, lac2dep;
   private ArrayList<JLabel> buttons;
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -120,16 +121,18 @@ public class LancingApproachScreens implements Harness
 
     // Add the approach screen buttons:
     JLabel eastWorthing = new JLabel("East Worthing", JLabel.CENTER);
-    eastWorthing.setFont(new Font("Garamond", Font.PLAIN, 22));
-    eastWorthing.setSize(150, 26);
+    configureButton(eastWorthing);
     eastWorthing.setLocation(10, BUTTON_LEVEL);
-    eastWorthing.setForeground(HIGHLIGHT);
-    eastWorthing.setBackground(CHARCOAL);
-    eastWorthing.setBorder(new LineBorder(HIGHLIGHT, 2));
-    eastWorthing.setOpaque(true);
     eastWorthing.setToolTipText("View East Worthing");
     eastWorthing.addMouseListener(new EWRListener(eastWorthing, this));
     buttons.add(eastWorthing);
+
+    JLabel lancing = new JLabel("Lancing", JLabel.CENTER);
+    configureButton(lancing);
+    lancing.setLocation(160, BUTTON_LEVEL);
+    lancing.setToolTipText("View Lancing");
+    lancing.addMouseListener(new LACListener(lancing, this));
+    buttons.add(lancing);
 
     // Add approach screen title:
     title = new JLabel("", JLabel.CENTER);
@@ -204,6 +207,31 @@ public class LancingApproachScreens implements Harness
     configureBerthLabel(ewr2dep);
     ewr2dep.setLocation(WINDOW_WIDTH / 2, LEVEL_8);
 
+    // Lancing info boxes:
+    lac1app = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(lac1app);
+    lac1app.setLocation(WINDOW_WIDTH / 2, LEVEL_2);
+
+    lac1arr = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(lac1arr);
+    lac1arr.setLocation(WINDOW_WIDTH / 2, LEVEL_3);
+
+    lac1dep = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(lac1dep);
+    lac1dep.setLocation(WINDOW_WIDTH / 2, LEVEL_4);
+
+    lac2app = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(lac2app);
+    lac2app.setLocation(WINDOW_WIDTH / 2, LEVEL_6);
+
+    lac2arr = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(lac2arr);
+    lac2arr.setLocation(WINDOW_WIDTH / 2, LEVEL_7);
+
+    lac2dep = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(lac2dep);
+    lac2dep.setLocation(WINDOW_WIDTH / 2, LEVEL_8);
+
   } // End ‘LancingApproachScreens()’ Constructor
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -239,21 +267,37 @@ public class LancingApproachScreens implements Harness
     {
 
       HashMap<String, String> parameters = message.getParameters();
+      String td = parameters.get("descr");
 
       if (parameters.get("to") != null)
       {
         if (parameters.get("to").equals("0020"))
-          ewr1app.setText(parameters.get("descr"));
+          ewr1app.setText(td);
         if (parameters.get("to").equals("0018"))
-          ewr1arr.setText(parameters.get("descr"));
+        {
+          ewr1arr.setText(td);
+          lac1app.setText(td);
+        }
         if (parameters.get("to").equals("0016"))
-          ewr1dep.setText(parameters.get("descr"));
+        {
+          ewr1dep.setText(td);
+          lac1arr.setText(td);
+        }
+        if (parameters.get("to").equals("0014"))
+          lac1dep.setText(td);
+        if (parameters.get("to").equals("0017"))
+          lac2app.setText(td);
+        if (parameters.get("to").equals("0019"))
+          lac2arr.setText(td);
         if (parameters.get("to").equals("0021"))
-          ewr2app.setText(parameters.get("descr"));
+        {
+          ewr2app.setText(td);
+          lac2dep.setText(td);
+        }
         if (parameters.get("to").equals("0023"))
-          ewr2arr.setText(parameters.get("descr"));
+          ewr2arr.setText(td);
         if (parameters.get("to").equals("0025"))
-          ewr2dep.setText(parameters.get("descr"));
+          ewr2dep.setText(td);
       } // End if
 
       if (parameters.get("from") != null)
@@ -261,11 +305,26 @@ public class LancingApproachScreens implements Harness
         if (parameters.get("from").equals("0020"))
           ewr1app.setText("");
         if (parameters.get("from").equals("0018"))
+        {
           ewr1arr.setText("");
+          lac1app.setText("");
+        }
         if (parameters.get("from").equals("0016"))
+        {
           ewr1dep.setText("");
+          lac1arr.setText("");
+        }
+        if (parameters.get("from").equals("0014"))
+          lac1dep.setText("");
+        if (parameters.get("from").equals("0017"))
+          lac2app.setText("");
+        if (parameters.get("from").equals("0019"))
+          lac2arr.setText("");
         if (parameters.get("from").equals("0021"))
+        {
           ewr2app.setText("");
+          lac2dep.setText("");
+        }
         if (parameters.get("from").equals("0023"))
           ewr2arr.setText("");
         if (parameters.get("from").equals("0025"))
@@ -500,6 +559,38 @@ public class LancingApproachScreens implements Harness
 
 // -------------------------------- LancingApproachScreens Class ---------------
 
+  void lancing()
+  {
+
+    refreshUI();
+
+    // Add labels
+    title.setText("Lancing");
+    mainWindow.add(title);
+    mainWindow.add(platform1);
+    mainWindow.add(approach1);
+    mainWindow.add(arrived1);
+    mainWindow.add(departed1);
+    mainWindow.add(platform2);
+    mainWindow.add(approach2);
+    mainWindow.add(arrived2);
+    mainWindow.add(departed2);
+
+    // Add info boxes:
+    mainWindow.add(lac1app);
+    mainWindow.add(lac1arr);
+    mainWindow.add(lac1dep);
+    mainWindow.add(lac2app);
+    mainWindow.add(lac2arr);
+    mainWindow.add(lac2dep);
+
+    // Refresh the portal:
+    mainWindow.repaint();
+
+  } // End ‘lancing()’ Method
+
+// -------------------------------- LancingApproachScreens Class ---------------
+
   private void refreshUI()
   {
 
@@ -531,13 +622,24 @@ public class LancingApproachScreens implements Harness
 
 // -------------------------------- LancingApproachScreens Class ---------------
 
-
   private static void configurePlatformLabel(JLabel label)
   {
     label.setFont(new Font("Garamond", Font.PLAIN, 24));
     label.setSize(WINDOW_WIDTH, 28);
     label.setForeground(GOLD);
   } // End ‘configurePlatformLabel(JLabel)’ Method
+
+// -------------------------------- LancingApproachScreens Class ---------------
+
+  private static void configureButton(JLabel button)
+  {
+    button.setFont(new Font("Garamond", Font.PLAIN, 22));
+    button.setSize(150, 26);
+    button.setForeground(HIGHLIGHT);
+    button.setBackground(CHARCOAL);
+    button.setBorder(new LineBorder(HIGHLIGHT, 2));
+    button.setOpaque(true);
+  } // End ‘configureButton(JLabel)’ Method
 
 // -------------------------------- LancingApproachScreens Class ---------------
 
