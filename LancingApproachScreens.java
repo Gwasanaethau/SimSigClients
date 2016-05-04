@@ -52,6 +52,10 @@ public class LancingApproachScreens implements Harness
   private static final int LEVEL_2 = 160;
   private static final int LEVEL_3 = 196;
   private static final int LEVEL_4 = 232;
+  private static final int LEVEL_5 = 278;
+  private static final int LEVEL_6 = 316;
+  private static final int LEVEL_7 = 352;
+  private static final int LEVEL_8 = 388;
 
   private SimSigClient client;
 
@@ -62,7 +66,8 @@ public class LancingApproachScreens implements Harness
   private JLabel failureMessage;
 
   private JLabel title, platform1, approach1, arrived1, departed1,
-    ewr1app, ewr1arr, ewr1dep;
+    platform2, approach2, arrived2, departed2,
+    ewr1app, ewr1arr, ewr1dep, ewr2app;
   private ArrayList<JLabel> buttons;
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -136,50 +141,60 @@ public class LancingApproachScreens implements Harness
 
     // Add platform 1 label:
     platform1 = new JLabel("Platform 1", JLabel.CENTER);
-    platform1.setFont(new Font("Garamond", Font.PLAIN, 24));
-    platform1.setSize(WINDOW_WIDTH, 28);
+    configurePlatformLabel(platform1);
     platform1.setLocation(0, LEVEL_1);
-    platform1.setForeground(GOLD);
 
     // Add approach label:
     approach1 = new JLabel("On Approach:", JLabel.RIGHT);
-    approach1.setFont(new Font("Garamond", Font.PLAIN, 22));
-    approach1.setSize(WINDOW_WIDTH / 2, 26);
+    configureBerthLabel(approach1);
     approach1.setLocation(0, LEVEL_2);
-    approach1.setForeground(GOLD);
 
     // Add arrived label:
     arrived1 = new JLabel("Arrived:", JLabel.RIGHT);
-    arrived1.setFont(new Font("Garamond", Font.PLAIN, 22));
-    arrived1.setSize(WINDOW_WIDTH / 2, 26);
+    configureBerthLabel(arrived1);
     arrived1.setLocation(0, LEVEL_3);
-    arrived1.setForeground(GOLD);
 
     // Add departed label:
     departed1 = new JLabel("Departed:", JLabel.RIGHT);
-    departed1.setFont(new Font("Garamond", Font.PLAIN, 22));
-    departed1.setSize(WINDOW_WIDTH / 2, 26);
+    configureBerthLabel(departed1);
     departed1.setLocation(0, LEVEL_4);
-    departed1.setForeground(GOLD);
+
+    // Add platform 2 label:
+    platform2 = new JLabel("Platform 2", JLabel.CENTER);
+    configurePlatformLabel(platform2);
+    platform2.setLocation(0, LEVEL_5);
+
+    // Add approach label:
+    approach2 = new JLabel("On Approach:", JLabel.RIGHT);
+    configureBerthLabel(approach2);
+    approach2.setLocation(0, LEVEL_6);
+
+    // Add arrived label:
+    arrived2 = new JLabel("Arrived:", JLabel.RIGHT);
+    configureBerthLabel(arrived2);
+    arrived2.setLocation(0, LEVEL_7);
+
+    // Add departed label:
+    departed2 = new JLabel("Departed:", JLabel.RIGHT);
+    configureBerthLabel(departed2);
+    departed2.setLocation(0, LEVEL_8);
 
     // East Worthing info boxes:
     ewr1app = new JLabel("", JLabel.LEFT);
-    ewr1app.setFont(new Font("Garamond", Font.PLAIN, 22));
-    ewr1app.setSize(WINDOW_WIDTH / 2, 26);
+    configureBerthLabel(ewr1app);
     ewr1app.setLocation(WINDOW_WIDTH / 2, LEVEL_2);
-    ewr1app.setForeground(GOLD);
 
     ewr1arr = new JLabel("", JLabel.LEFT);
-    ewr1arr.setFont(new Font("Garamond", Font.PLAIN, 22));
-    ewr1arr.setSize(WINDOW_WIDTH / 2, 26);
+    configureBerthLabel(ewr1arr);
     ewr1arr.setLocation(WINDOW_WIDTH / 2, LEVEL_3);
-    ewr1arr.setForeground(GOLD);
 
     ewr1dep = new JLabel("", JLabel.LEFT);
-    ewr1dep.setFont(new Font("Garamond", Font.PLAIN, 22));
-    ewr1dep.setSize(WINDOW_WIDTH / 2, 26);
+    configureBerthLabel(ewr1dep);
     ewr1dep.setLocation(WINDOW_WIDTH / 2, LEVEL_4);
-    ewr1dep.setForeground(GOLD);
+
+    ewr2app = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(ewr2app);
+    ewr2app.setLocation(WINDOW_WIDTH / 2, LEVEL_6);
 
   } // End ‘LancingApproachScreens()’ Constructor
 
@@ -225,6 +240,8 @@ public class LancingApproachScreens implements Harness
           ewr1arr.setText(parameters.get("descr"));
         if (parameters.get("to").equals("0016"))
           ewr1dep.setText(parameters.get("descr"));
+        if (parameters.get("to").equals("0021"))
+          ewr2app.setText(parameters.get("descr"));
       } // End if
 
       if (parameters.get("from") != null)
@@ -235,6 +252,8 @@ public class LancingApproachScreens implements Harness
           ewr1arr.setText("");
         if (parameters.get("from").equals("0016"))
           ewr1dep.setText("");
+        if (parameters.get("from").equals("0021"))
+          ewr2app.setText("");
       } // End if
 
     } // End if
@@ -445,11 +464,14 @@ public class LancingApproachScreens implements Harness
     mainWindow.add(approach1);
     mainWindow.add(arrived1);
     mainWindow.add(departed1);
+    mainWindow.add(platform2);
+    mainWindow.add(approach2);
 
     // Add info boxes:
     mainWindow.add(ewr1app);
     mainWindow.add(ewr1arr);
     mainWindow.add(ewr1dep);
+    mainWindow.add(ewr2app);
 
     // Refresh the portal:
     mainWindow.repaint();
@@ -477,6 +499,25 @@ public class LancingApproachScreens implements Harness
     mainWindow.repaint();
 
   } // End ‘refreshUI()’ Method
+
+// -------------------------------- LancingApproachScreens Class ---------------
+
+  private static void configureBerthLabel(JLabel label)
+  {
+    label.setFont(new Font("Garamond", Font.PLAIN, 22));
+    label.setSize(WINDOW_WIDTH / 2, 26);
+    label.setForeground(GOLD);
+  } // End ‘configureBerthLabel(JLabel)’ Method
+
+// -------------------------------- LancingApproachScreens Class ---------------
+
+
+  private static void configurePlatformLabel(JLabel label)
+  {
+    label.setFont(new Font("Garamond", Font.PLAIN, 24));
+    label.setSize(WINDOW_WIDTH, 28);
+    label.setForeground(GOLD);
+  } // End ‘configurePlatformLabel(JLabel)’ Method
 
 // -------------------------------- LancingApproachScreens Class ---------------
 
