@@ -89,11 +89,13 @@ public class LancingApproachScreens implements Harness
 
     // Set up the programme icon:
     mainWindow.setIconImage(new ImageIcon(
-      "/home/mark/Ríomhchlár/Java/Sources/simsigClients/lancing.png").getImage());
+      "/home/mark/Ríomhchlár/Java/Sources/simsigClients/" +
+      "LancingApproachScreens/lancing.png").getImage());
 
     // Add the logo:
     logo = new Picture(
-      "/home/mark/Ríomhchlár/Java/Sources/simsigClients/lancing.png");
+      "/home/mark/Ríomhchlár/Java/Sources/simsigClients/" +
+      "LancingApproachScreens/lancing.png");
     logo.setLocation(0, 0);
     logo.setToolTipText("Lancing Approach Information");
 
