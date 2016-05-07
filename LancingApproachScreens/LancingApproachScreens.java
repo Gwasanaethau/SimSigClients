@@ -71,7 +71,8 @@ public class LancingApproachScreens implements Harness
     lac1app, lac1arr, lac1dep, lac2app, lac2arr, lac2dep,
     sse1app, sse1arr, sse1dep, sse2app, sse2arr, sse2dep,
     swk1app, swk1arr, swk1dep, swk2app, swk2arr, swk2dep,
-    fsg1app, fsg1arr, fsg1dep, fsg2app, fsg2arr, fsg2dep;
+    fsg1app, fsg1arr, fsg1dep, fsg2app, fsg2arr, fsg2dep,
+    pld1app, pld1arr, pld1dep, pld2app, pld2arr, pld2dep;
   private ArrayList<JLabel> buttons;
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -159,6 +160,13 @@ public class LancingApproachScreens implements Harness
     fishersgate.setToolTipText("View Fishersgate");
     fishersgate.addMouseListener(new FSGListener(fishersgate, this));
     buttons.add(fishersgate);
+
+    JLabel portslade = new JLabel("Portslade", JLabel.CENTER);
+    configureButton(portslade);
+    portslade.setLocation(810, BUTTON_LEVEL);
+    portslade.setToolTipText("View Portslade");
+    portslade.addMouseListener(new PLDListener(portslade, this));
+    buttons.add(portslade);
 
     // Add approach screen title:
     title = new JLabel("", JLabel.CENTER);
@@ -333,6 +341,31 @@ public class LancingApproachScreens implements Harness
     configureBerthLabel(fsg2dep);
     fsg2dep.setLocation(WINDOW_WIDTH / 2, LEVEL_8);
 
+    // Portslade info boxes:
+    pld1app = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(pld1app);
+    pld1app.setLocation(WINDOW_WIDTH / 2, LEVEL_2);
+
+    pld1arr = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(pld1arr);
+    pld1arr.setLocation(WINDOW_WIDTH / 2, LEVEL_3);
+
+    pld1dep = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(pld1dep);
+    pld1dep.setLocation(WINDOW_WIDTH / 2, LEVEL_4);
+
+    pld2app = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(pld2app);
+    pld2app.setLocation(WINDOW_WIDTH / 2, LEVEL_6);
+
+    pld2arr = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(pld2arr);
+    pld2arr.setLocation(WINDOW_WIDTH / 2, LEVEL_7);
+
+    pld2dep = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(pld2dep);
+    pld2dep.setLocation(WINDOW_WIDTH / 2, LEVEL_8);
+
   } // End ‘LancingApproachScreens()’ Constructor
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -406,13 +439,26 @@ public class LancingApproachScreens implements Harness
         {
           swk1dep.setText(td);
           fsg1arr.setText(td);
+          pld1app.setText(td);
         }
         if (parameters.get("to").equals("0002"))
+        {
           fsg1dep.setText(td);
+          pld1arr.setText(td);
+        }
+        if (parameters.get("to").equals("T686"))
+          pld1dep.setText(td);
 
         // Down Brighton:
+        if (parameters.get("to").equals("0003"))
+          pld2app.setText(td);
+        if (parameters.get("to").equals("0005"))
+          pld2arr.setText(td);
         if (parameters.get("to").equals("0007"))
+        {
           fsg2app.setText(td);
+          pld2dep.setText(td);
+        }
         if (parameters.get("to").equals("0009"))
         {
           swk2app.setText(td);
@@ -483,13 +529,26 @@ public class LancingApproachScreens implements Harness
         {
           swk1dep.setText("");
           fsg1arr.setText("");
+          pld1app.setText("");
         }
         if (parameters.get("from").equals("0002"))
+        {
           fsg1dep.setText("");
+          pld1arr.setText("");
+        }
+        if (parameters.get("from").equals("T686"))
+          pld1dep.setText("");
 
         // Down Brighton:
+        if (parameters.get("from").equals("0003"))
+          pld2app.setText("");
+        if (parameters.get("from").equals("0005"))
+          pld2arr.setText("");
         if (parameters.get("from").equals("0007"))
+        {
           fsg2app.setText("");
+          pld2dep.setText("");
+        }
         if (parameters.get("from").equals("0009"))
         {
           swk2app.setText("");
@@ -877,6 +936,38 @@ public class LancingApproachScreens implements Harness
     mainWindow.repaint();
 
   } // End ‘fishersgate()’ Method
+
+// -------------------------------- LancingApproachScreens Class ---------------
+
+  void portslade()
+  {
+
+    refreshUI();
+
+    // Add labels
+    title.setText("Portslade");
+    mainWindow.add(title);
+    mainWindow.add(platform1);
+    mainWindow.add(approach1);
+    mainWindow.add(arrived1);
+    mainWindow.add(departed1);
+    mainWindow.add(platform2);
+    mainWindow.add(approach2);
+    mainWindow.add(arrived2);
+    mainWindow.add(departed2);
+
+    // Add info boxes:
+    mainWindow.add(pld1app);
+    mainWindow.add(pld1arr);
+    mainWindow.add(pld1dep);
+    mainWindow.add(pld2app);
+    mainWindow.add(pld2arr);
+    mainWindow.add(pld2dep);
+
+    // Refresh the portal:
+    mainWindow.repaint();
+
+  } // End ‘portslade()’ Method
 
 // -------------------------------- LancingApproachScreens Class ---------------
 
