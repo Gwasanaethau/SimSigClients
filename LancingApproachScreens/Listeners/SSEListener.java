@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 /**
- * <code>SSEListener</code> shows details of East Worthing station.
+ * <code>SSEListener</code> shows details of Shoreham-by-Sea station.
  *
  * @author Mark David Pokorny
  * @version Dé Sathairn, 7ú Bealtaine 2016

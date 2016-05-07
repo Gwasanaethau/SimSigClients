@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 // +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 /**
- * <code>SWKListener</code> shows details of East Worthing station.
+ * <code>SWKListener</code> shows details of Southwick station.
  *
  * @author Mark David Pokorny
  * @version Dé Sathairn, 7ú Bealtaine 2016
