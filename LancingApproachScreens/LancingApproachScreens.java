@@ -69,7 +69,8 @@ public class LancingApproachScreens implements Harness
     platform2, approach2, arrived2, departed2,
     ewr1app, ewr1arr, ewr1dep, ewr2app, ewr2arr, ewr2dep,
     lac1app, lac1arr, lac1dep, lac2app, lac2arr, lac2dep,
-    sse1app, sse1arr, sse1dep, sse2app, sse2arr, sse2dep;
+    sse1app, sse1arr, sse1dep, sse2app, sse2arr, sse2dep,
+    swk1app, swk1arr, swk1dep, swk2app, swk2arr, swk2dep;
   private ArrayList<JLabel> buttons;
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -143,6 +144,13 @@ public class LancingApproachScreens implements Harness
     shoreham.setToolTipText("View Shoreham-by-Sea");
     shoreham.addMouseListener(new SSEListener(shoreham, this));
     buttons.add(shoreham);
+
+    JLabel southwick = new JLabel("Southwick", JLabel.CENTER);
+    configureButton(southwick);
+    southwick.setLocation(330, BUTTON_LEVEL);
+    southwick.setToolTipText("View Shoreham-by-Sea");
+    southwick.addMouseListener(new SWKListener(southwick, this));
+    buttons.add(southwick);
 
     // Add approach screen title:
     title = new JLabel("", JLabel.CENTER);
@@ -267,6 +275,31 @@ public class LancingApproachScreens implements Harness
     configureBerthLabel(sse2dep);
     sse2dep.setLocation(WINDOW_WIDTH / 2, LEVEL_8);
 
+    // Southwick info boxes:
+    swk1app = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(swk1app);
+    swk1app.setLocation(WINDOW_WIDTH / 2, LEVEL_2);
+
+    swk1arr = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(swk1arr);
+    swk1arr.setLocation(WINDOW_WIDTH / 2, LEVEL_3);
+
+    swk1dep = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(swk1dep);
+    swk1dep.setLocation(WINDOW_WIDTH / 2, LEVEL_4);
+
+    swk2app = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(swk2app);
+    swk2app.setLocation(WINDOW_WIDTH / 2, LEVEL_6);
+
+    swk2arr = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(swk2arr);
+    swk2arr.setLocation(WINDOW_WIDTH / 2, LEVEL_7);
+
+    swk2dep = new JLabel("", JLabel.LEFT);
+    configureBerthLabel(swk2dep);
+    swk2dep.setLocation(WINDOW_WIDTH / 2, LEVEL_8);
+
   } // End ‘LancingApproachScreens()’ Constructor
 
 // -------------------------------- LancingApproachScreens Class ---------------
@@ -327,13 +360,28 @@ public class LancingApproachScreens implements Harness
         if (parameters.get("to").equals("0010"))
           sse1arr.setText(td);
         if (parameters.get("to").equals("0008"))
+        {
           sse1dep.setText(td);
+          swk1app.setText(td);
+        }
+        if (parameters.get("to").equals("0006"))
+          swk1arr.setText(td);
+        if (parameters.get("to").equals("0004"))
+          swk1dep.setText(td);
 
         // Down Brighton:
+        if (parameters.get("to").equals("0009"))
+          swk2app.setText(td);
         if (parameters.get("to").equals("0011"))
+        {
           sse2app.setText(td);
+          swk2arr.setText(td);
+        }
         if (parameters.get("to").equals("0013"))
+        {
           sse2arr.setText(td);
+          swk2dep.setText(td);
+        }
         if (parameters.get("to").equals("0015"))
           sse2dep.setText(td);
         if (parameters.get("to").equals("0017"))
@@ -375,13 +423,28 @@ public class LancingApproachScreens implements Harness
         if (parameters.get("from").equals("0010"))
           sse1arr.setText("");
         if (parameters.get("from").equals("0008"))
+        {
           sse1dep.setText("");
+          swk1app.setText("");
+        }
+        if (parameters.get("from").equals("0006"))
+          swk1arr.setText("");
+        if (parameters.get("from").equals("0004"))
+          swk1dep.setText("");
 
         // Down Brighton:
+        if (parameters.get("from").equals("0009"))
+          swk2app.setText("");
         if (parameters.get("from").equals("0011"))
+        {
           sse2app.setText("");
+          swk2arr.setText("");
+        }
         if (parameters.get("from").equals("0013"))
+        {
           sse2arr.setText("");
+          swk2dep.setText("");
+        }
         if (parameters.get("from").equals("0015"))
           sse2dep.setText("");
         if (parameters.get("from").equals("0017"))
@@ -689,6 +752,38 @@ public class LancingApproachScreens implements Harness
     mainWindow.repaint();
 
   } // End ‘shoreham()’ Method
+
+// -------------------------------- LancingApproachScreens Class ---------------
+
+  void southwick()
+  {
+
+    refreshUI();
+
+    // Add labels
+    title.setText("Southwick");
+    mainWindow.add(title);
+    mainWindow.add(platform1);
+    mainWindow.add(approach1);
+    mainWindow.add(arrived1);
+    mainWindow.add(departed1);
+    mainWindow.add(platform2);
+    mainWindow.add(approach2);
+    mainWindow.add(arrived2);
+    mainWindow.add(departed2);
+
+    // Add info boxes:
+    mainWindow.add(swk1app);
+    mainWindow.add(swk1arr);
+    mainWindow.add(swk1dep);
+    mainWindow.add(swk2app);
+    mainWindow.add(swk2arr);
+    mainWindow.add(swk2dep);
+
+    // Refresh the portal:
+    mainWindow.repaint();
+
+  } // End ‘southwick()’ Method
 
 // -------------------------------- LancingApproachScreens Class ---------------
 
