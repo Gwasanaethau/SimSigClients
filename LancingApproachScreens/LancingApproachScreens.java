@@ -148,14 +148,14 @@ public class LancingApproachScreens implements Harness
 
     JLabel southwick = new JLabel("Southwick", JLabel.CENTER);
     configureButton(southwick);
-    southwick.setLocation(330, BUTTON_LEVEL);
+    southwick.setLocation(490, BUTTON_LEVEL);
     southwick.setToolTipText("View Southwick");
     southwick.addMouseListener(new SWKListener(southwick, this));
     buttons.add(southwick);
 
     JLabel fishersgate = new JLabel("Fishersgate", JLabel.CENTER);
     configureButton(fishersgate);
-    fishersgate.setLocation(330, BUTTON_LEVEL);
+    fishersgate.setLocation(650, BUTTON_LEVEL);
     fishersgate.setToolTipText("View Fishersgate");
     fishersgate.addMouseListener(new FSGListener(fishersgate, this));
     buttons.add(fishersgate);
