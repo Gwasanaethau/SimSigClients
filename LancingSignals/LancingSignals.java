@@ -38,18 +38,21 @@ public class LancingSignals implements Harness
   public void connected(boolean success)
   {
 
-    signals = new ArrayList<Signal>();
-    for (int i = 1; i <= 21; i++)
-      signals.add(new Signal("LG" + String.format("%02d", i)));
+    if (success)
+    {
+      signals = new ArrayList<Signal>();
+      for (int i = 1; i <= 21; i++)
+        signals.add(new Signal("LG" + String.format("%02d", i)));
 
-    System.out.println("\033[2J"); // Clear screen.
-    printSignalChart();
+      System.out.println("\033[2J"); // Clear screen.
+      printSignalChart();
 
-    boolean quit = false;
+      boolean quit = false;
 
-    while (!quit)
-      if (keyboard.nextLine().charAt(0) == 'q')
-        quit = true;
+      while (!quit)
+        if (keyboard.nextLine().charAt(0) == 'q')
+          quit = true;
+    } // End if
 
   } // End ‘connected()’ Method
 
